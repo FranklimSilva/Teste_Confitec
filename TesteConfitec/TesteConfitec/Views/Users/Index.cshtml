@@ -1,0 +1,68 @@
+﻿@model IEnumerable<TesteConfitec.Models.User>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    .btnNewUser {
+        color:#FFFFFF;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight:bold;
+    }
+
+    .btnNewUser:hover{
+        text-decoration: none;
+        color:#FFFFFF;
+        }
+    
+</style>
+
+<h1>Tela de Usuario</h1>
+
+<p class="btn btn-success">
+    <a asp-action="Create" class="btnNewUser">Novo Usuário</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.firstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.lastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.birthday)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.firstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.birthday)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id" class="btn btn-success">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.id" class="btn btn-info">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.id" class="btn btn-danger">Excluir</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
